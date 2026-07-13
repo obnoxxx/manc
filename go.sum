@@ -1,0 +1,4 @@
+github.com/gontract/gontract v0.0.0-20260711173901-f56202c1b7bd h1:9UrJwQpYpvMMAw5m6QRtgGv7lcg6k2yRHWZQeItJ5A8=
+github.com/gontract/gontract v0.0.0-20260711173901-f56202c1b7bd/go.mod h1:RCYU3QXJAwM7kq5k2fTnhiaQsXwcdRBiUFCiiW8NNXE=
+gitlab.com/stone.code/assert v1.1.4 h1:vYUu8lNSBjpNIgolWQxhtkA63US19p5vQ26nYrgehEs=
+gitlab.com/stone.code/assert v1.1.4/go.mod h1:vjH9OTT54rkMI9Idu4cluF4UiBLlX11MocvOlBj3YmQ=
