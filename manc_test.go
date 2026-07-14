@@ -20,6 +20,7 @@ func TestFloatEquals(t *testing.T) {
 		{name: "within relative epsilon", a: 1e10, b: 1e10 + 1, want: true},
 		{name: "outside relative epsilon", a: 1e10, b: 1e10 + 200, want: false},
 		{name: "opposite signs", a: -1, b: 1, want: false},
+		{name: "reflexivity", a: 1, b: 1, want: true},
 	}
 
 	for _, tt := range tests {

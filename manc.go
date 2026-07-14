@@ -15,24 +15,28 @@ const epsilon = 1e-8
 //
 // comparison otherwise.
 func FloatEquals(a, b float64) (equal bool) {
-	gontract.Require(
-		!math.IsNaN(a) && !math.IsNaN(b) &&
-			!math.IsInf(a, 0) && !math.IsInf(b, 0),
-		"operands must be finite numbers",
-	)
+	// PRECONDITIONS:
+	gontract.Require(!math.IsNaN(a), "operands must be numbers.")
+	gontract.Require(!math.IsNaN(b), "operands must be numbers.")
+	gontract.Require(!math.IsInf(a, 0), "operands must be finite")
+	gontract.Require(!math.IsInf(b, 0), "operand must be finite.")
+	// POSTCONDITIONS:
 	defer func() {
-		diff := math.Abs(a - b)
-		expected := diff < epsilon || diff < math.Max(math.Abs(a), math.Abs(b))*epsilon
-		gontract.Ensure(equal == expected, "result reflects approximate equality")
+		gontract.Ensure(equal == floatEquals(b, a), "result is symmetric in operands.")
+		gontract.Ensure(floatEquals(a, a), "number is equal to itself.")
 	}()
 
+	return floatEquals(a, b)
+}
+
+// floatEquals implements FloatEquals without contracts so postconditions can
+// evaluate the result without recursively invoking FloatEquals.
+func floatEquals(a, b float64) bool {
 	diff := math.Abs(a - b)
 	if diff < epsilon {
-		equal = true
-		return
+		return true
 	}
 
 	largest := math.Max(math.Abs(a), math.Abs(b))
-	equal = diff < largest*epsilon
-	return
+	return diff < largest*epsilon
 }
