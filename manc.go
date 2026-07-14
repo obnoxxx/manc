@@ -9,8 +9,11 @@ import (
 
 const epsilon = 1e-8
 
-// FloatEquals reports whether a and b are approximately equal using an
-// absolute comparison near zero and a relative comparison otherwise.
+// FloatEquals reports whether a and b are approximately equal
+//
+//	It uses an absolute comparison near zero and a relative
+//
+// comparison otherwise.
 func FloatEquals(a, b float64) (equal bool) {
 	gontract.Require(
 		!math.IsNaN(a) && !math.IsNaN(b) &&
@@ -25,9 +28,11 @@ func FloatEquals(a, b float64) (equal bool) {
 
 	diff := math.Abs(a - b)
 	if diff < epsilon {
-		return true
+		equal = true
+		return
 	}
 
 	largest := math.Max(math.Abs(a), math.Abs(b))
-	return diff < largest*epsilon
+	equal = diff < largest*epsilon
+	return
 }
