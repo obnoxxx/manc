@@ -1,0 +1,57 @@
+name: CI
+on:
+
+  push:
+    tags:
+      - v*
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - main
+
+jobs:
+
+  build:
+    name: lint  and test
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+
+    - name: Set up Go
+      uses: actions/setup-go@v6
+      with:
+        go-version: '1.26'
+      id: go
+
+
+
+    - name: Check out code
+      uses: actions/checkout@v5
+      with:
+        fetch-depth: 1
+    - name: Install dependencies  (mage)
+      run: |
+        go install github.com/magefile/mage@v1.16.0
+
+
+    - name: Install dependencies (macOS)
+      if: matrix.os == 'macos-latest'
+      run: |
+        echo "nothing to do."
+        
+    - name: Install dependencies (Linux/Ubuntu)
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        echo "nothing to do"
+
+    - name:  run checks (linters and unit tests)
+      run: $(go env GOPATH)/bin/mage check
+      shell: bash
+
