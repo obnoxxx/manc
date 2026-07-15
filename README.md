@@ -5,12 +5,12 @@
 
 # manc
 
-`manc` provides ancillary math functions for Go.at has essentially been extracted from the example code of [gontract](https://github.com/gontract/gontract)
+`manc` provides ancillary math functions for Go. It has essentially been extracted from the example code of [gontract](https://github.com/gontract/gontract)
 
 
 ## FoatEquals
 
-The `FloatEquals` function reports if two floats are approximately eual,
+The `FloatEquals` function reports if two floats are approximately equal,
 taking into account imprecisions of binary representation and rounding.
 
 ```go
