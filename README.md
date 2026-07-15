@@ -10,7 +10,7 @@
 
 ## FoatEquals
 
-The `FloatEquals` function reports if two floats are approximately equal,
+The function `FloatEquals` reports if two floats are approximately equal,
 taking into account imprecisions of binary representation and rounding.
 
 ```go
