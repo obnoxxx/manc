@@ -10,7 +10,7 @@
 ## FoatEquals
 
 The `FloatEquals` function reports if two floats are approximately eual,
-takin into account imprecisions of binary representation and rouynding.
+taking into account imprecisions of binary representation and rounding.
 
 ```go
 if manc.FloatEquals(result, expected) {
