@@ -5,7 +5,8 @@
 
 # manc
 
-`manc` provides ancillary math functions for Go.
+`manc` provides ancillary math functions for Go.at has essentially been extracted from the example code of [gontract](https://github.com/gontract/gontract)
+
 
 ## FoatEquals
 
