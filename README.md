@@ -8,7 +8,7 @@
 `manc` provides ancillary math functions for Go. It has essentially been extracted from the example code of [gontract](https://github.com/gontract/gontract)
 
 
-## FoatEquals
+## FloatEquals
 
 The function `FloatEquals` reports if two floats are approximately equal,
 taking into account imprecisions of binary representation and rounding.
