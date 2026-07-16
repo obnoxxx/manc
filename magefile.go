@@ -17,7 +17,7 @@ func Vet() error {
 	return goCommand("vet", "./...")
 }
 
-// check go formatting.
+// Fmt formats Go source code using "go fmt".
 func Fmt() error {
 
 	return goCommand("fmt", "./...")
