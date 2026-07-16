@@ -17,6 +17,11 @@ func Vet() error {
 	return goCommand("vet", "./...")
 }
 
+// Actionlint checks GitHub Actions workflows.
+func Actionlint() error {
+	return goCommand("run", "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12", "-color")
+}
+
 // Fmt formats Go source code using "go fmt".
 func Fmt() error {
 
