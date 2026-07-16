@@ -37,6 +37,9 @@ func Check() error {
 	if err := Vet(); err != nil {
 		return err
 	}
+	if err := Actionlint(); err != nil {
+		return err
+	}
 	return Test()
 }
 
