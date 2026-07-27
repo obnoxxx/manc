@@ -29,7 +29,14 @@ func Fmt() error {
 
 }
 
-// Check formats source code, then runs vet and tests.
+// GolangciLint runs the golangci-lint checker.
+func GolangciLint() error {
+
+	return goCommand("run", "github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.12.2", "run")
+
+}
+
+// Check ilints and formats the source code, then runs tests.
 func Check() error {
 	if err := Fmt(); err != nil {
 		return err
@@ -38,6 +45,9 @@ func Check() error {
 		return err
 	}
 	if err := Actionlint(); err != nil {
+		return err
+	}
+	if err := GolangciLint(); err != nil {
 		return err
 	}
 	return Test()
