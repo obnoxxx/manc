@@ -17,9 +17,14 @@ func Vet() error {
 	return goCommand("vet", "./...")
 }
 
+// Fmt formats the go source code
+func Fmt() error {
+	return goCommand("fmt", "./...")
+}
+
 // Check formats source code, then runs vet and tests.
 func Check() error {
-	if err := goCommand("fmt", "./..."); err != nil {
+	if err := Fmt(); err != nil {
 		return err
 	}
 	if err := Vet(); err != nil {
