@@ -5,18 +5,30 @@
 
 # manc
 
-`manc` provides ancillary floating point math functions for Go. It has essentially been extracted from the example code of [gontract](https://github.com/gontract/gontract)
+`manc` provides ancillary math functions for comparing floats in Go.
+
+It has essentially been extracted from the example code of [gontract](https://github.com/gontract/gontract)
 
 
 ## FloatEquals
 
 The function `FloatEquals` reports if two floats are approximately equal,
-taking into account imprecisions of binary representation and rounding.
+while `FloatIsZero tests if a float is approximately zero.
+These take into account imprecisions of binary representation and rounding.
+
+
+
 
 ```go
+
 if manc.FloatEquals(result, expected) {
 	// Values are approximately equal.
 }
+
+if manc.FloatIsZero(num) {
+	// The number is zero
+}
+
 ```
 
 ## Development
