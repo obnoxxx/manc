@@ -20,8 +20,8 @@ func Vet() error {
 	return goCommand("vet", "./...")
 }
 
-// Actionlint checks GitHub Actions workflows.
-func Actionlint() error {
+// ActionLint checks GitHub Actions workflows.
+func ActionLint() error {
 
 	fmt.Println("Linting the github workflow files...")
 	return goCommand("run", "github.com/rhysd/actionlint/cmd/actionlint@v1.7.12", "-color")
@@ -42,20 +42,27 @@ func GolangciLint() error {
 
 }
 
-// Check ilints and formats the source code, then runs tests.
-func Check() error {
+// Lint runs various linters: It formats and lints the on go code and lints the workflow files.
+func Lint() error {
 	if err := Fmt(); err != nil {
 		return err
 	}
 	if err := Vet(); err != nil {
 		return err
 	}
-	if err := Actionlint(); err != nil {
+	if err := ActionLint(); err != nil {
 		return err
 	}
-	if err := GolangciLint(); err != nil {
+	return GolangciLint()
+}
+
+// Check runs linters and unit tests.
+func Check() error {
+
+	if err := Lint(); err != nil {
 		return err
 	}
+
 	return Test()
 }
 
