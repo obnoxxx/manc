@@ -5,6 +5,30 @@ import (
 	"testing"
 )
 
+func TestFloatIsZero(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name string
+		a    float64
+		want bool
+	}{
+		{name: "positive epsilon", a: epsilon, want: true},
+		{name: "negative epsilon", a: -epsilon, want: true},
+		{name: "zero", a: 0, want: true},
+		{name: "outside epsilon", a: math.Nextafter(epsilon, math.Inf(1)), want: false},
+		{name: "one", a: 1, want: false},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := FloatIsZero(tt.a); got != tt.want {
+				t.Errorf("FloatIsZero(%v) = %t, want %t", tt.a, got, tt.want)
+			}
+		})
+	}
+}
+
 func TestFloatEquals(t *testing.T) {
 	t.Parallel()
 
