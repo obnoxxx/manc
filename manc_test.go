@@ -29,7 +29,7 @@ func TestFloatIsZero(t *testing.T) {
 	}
 }
 
-func TestFloatEquals(t *testing.T) {
+func TestFloatsAreEqual(t *testing.T) {
 	t.Parallel()
 
 	tests := []struct {
@@ -49,24 +49,24 @@ func TestFloatEquals(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := FloatEquals(tt.a, tt.b); got != tt.want {
-				t.Errorf("FloatEquals(%v, %v) = %t, want %t", tt.a, tt.b, got, tt.want)
+			if got := FloatsAreEqual(tt.a, tt.b); got != tt.want {
+				t.Errorf("FloatsAreEqual(%v, %v) = %t, want %t", tt.a, tt.b, got, tt.want)
 			}
 		})
 	}
 }
 
-func TestFloatEqualsRejectsNonFiniteOperands(t *testing.T) {
+func TestFloatsAreEqualRejectsNonFiniteOperands(t *testing.T) {
 	t.Parallel()
 
 	for _, value := range []float64{math.Inf(1), math.Inf(-1), math.NaN()} {
 		t.Run("non-finite operand", func(t *testing.T) {
 			defer func() {
 				if recover() == nil {
-					t.Error("FloatEquals did not panic")
+					t.Error("FloatsAreEqual did not panic")
 				}
 			}()
-			FloatEquals(value, 0)
+			FloatsAreEqual(value, 0)
 		})
 	}
 }
