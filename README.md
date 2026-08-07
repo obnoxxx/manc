@@ -10,21 +10,28 @@
 It has essentially been extracted from the example code of [gontract](https://github.com/gontract/gontract)
 
 
-## FloatEquals
+## FloatsAreEqual
 
-The function `FloatEquals` reports if two floats are approximately equal,
-while `FloatIsZero tests if a float is approximately zero.
-These take into account imprecisions of binary representation and rounding.
+The function `FloatsAreEqual` reports if two floats are approximately equal,
+taking into account imprecisions of binary representation and rounding.
+```go
+
+if manc.FloatsAreEqual(result, expected) {
+	// Values are approximately equal.
+}
+```
+
+
+
+@@ FloatIsZero
+
+The function `FloatIsZero tests if a float is approximately zero.
+
 
 
 
 
 ```go
-
-if manc.FloatEquals(result, expected) {
-	// Values are approximately equal.
-}
-
 if manc.FloatIsZero(num) {
 	// The number is zero
 }
