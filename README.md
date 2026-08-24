@@ -14,6 +14,7 @@ It has essentially been extracted from the example code of [gontract](https://gi
 
 The function `FloatsAreEqual` reports if two floats are approximately equal,
 taking into account imprecisions of binary representation and rounding.
+Example:
 ```go
 
 if manc.FloatsAreEqual(result, expected) {
@@ -23,14 +24,10 @@ if manc.FloatsAreEqual(result, expected) {
 
 
 
-@@ FloatIsZero
+## FloatIsZero
 
-The function `FloatIsZero tests if a float is approximately zero.
-
-
-
-
-
+The function `FloatIsZero` tests if a float is approximately zero.
+Example:
 ```go
 if manc.FloatIsZero(num) {
 	// The number is zero
